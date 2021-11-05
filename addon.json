@@ -2,5 +2,5 @@
 	"title"		:	"[TTT2] Imitator [ROLE]",
 	"type"		:	"ServerContent",
     "tags"		:	[ "roleplay", "fun" ],
-    "ignore"    : [".git/*", ".gitignore"]
+    "ignore"    : [".git/*", ".gitattributes"]
 }

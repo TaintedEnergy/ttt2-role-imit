@@ -164,7 +164,6 @@ if SERVER then
 		if GetRoundState() == ROUND_ACTIVE and ply:Alive() and not IsInSpecDM(ply) and imitations_id_is_valid then
 			local role_id = ply.imitations[imitations_id]
 			DestroyImitations(ply)
-			events.Trigger(EVENT_UNDEC_VOTE, ply, role_id)
 			
 			ply:SetRole(role_id, TEAM_TRAITOR)
 			SendFullStateUpdate()
@@ -183,6 +182,16 @@ if SERVER then
 
 	hook.Add("TTT2CheckCreditAward", "ImitatorAvoidCreditAward", function(victim, inflictor, attacker)
 		return not victim.imit_has_voted
+	end)
+
+	hook.Add("TTT2ConfirmPlayer", "TTT2ImitHideTeam", function(confirmed, finder, corpse)
+		if IsValid(confirmed) and corpse and CORPSE.GetPlayer(corpse).imit_has_voted and CORPSE.GetPlayer(corpse):GetBaseRole() == ROLE_INNOCENT then
+			confirmed:ConfirmPlayer(true)
+			SendRoleListMessage(CORPSE.GetPlayer(corpse):GetSubRole(), TEAM_INNOCENT, {confirmed:EntIndex()})
+			events.Trigger(EVENT_BODYFOUND, finder, corpse)
+
+			return false
+		end
 	end)
 end
 

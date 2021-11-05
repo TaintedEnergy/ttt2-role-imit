@@ -11,10 +11,3 @@ L["ttt2_desc_" .. IMITATOR.name] = [[You are an Imitator. You may choose a role 
 -- OTHER ROLE LANGUAGE STRINGS
 L["IMITATIONS_TITLE_" .. IMITATOR.name] = "Choose Your Role"
 L["BAD_IMITATIONS_" .. IMITATOR.name] = "Bad ballot! Please yell at the admin for their blatant disenfranchisement."
-
--- EVENT STRINGS
--- Need to be very specifically worded, due to how the system translates them.
-L["title_event_undec_vote"] = "An Imitator player voted"
-L["desc_event_undec_vote"] = "{name} voted to become: {role}."
-L["tooltip_undec_vote_score"] = "Voted: {score}"
-L["undec_vote_score"] = "Voted:"
