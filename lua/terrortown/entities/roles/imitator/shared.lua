@@ -199,10 +199,10 @@ if SERVER then
 		if not ply.imit_has_voted then return end
 
 		for tra in pairs(tbl) do
-			if tra:IsTerror() and (tra:GetTeam() == TEAM_TRAITOR or tra:GetSubRoleData().defaultTeam == TEAM_TRAITOR or tra:GetSubRole() == ROLE_SPY) and tra ~= ply then
+			if tra:IsTerror() and (tra:GetTeam() == ply:GetTeam() or tra:GetSubRoleData().defaultTeam == ply:GetTeam() or tra:GetSubRole() == ROLE_SPY) and tra ~= ply then
 				tbl[tra] = {ROLE_TRAITOR, TEAM_TRAITOR}
 			elseif ply == tra then
-				tbl[tra] = {tbl[tra][1], TEAM_TRAITOR}
+				tbl[tra] = {tbl[tra][1], tra:GetTeam()}
 			end
 		end
 	end)
