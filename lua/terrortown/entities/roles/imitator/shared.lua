@@ -193,6 +193,19 @@ if SERVER then
 			return false
 		end
 	end)
+
+	--Allow Imitator to see traitor allies
+	hook.Add("TTT2SpecialRoleSyncing", "TTT2ImitatorSeeTraitorTeam", function(ply, tbl)
+		if not ply.imit_has_voted then return end
+
+		for tra in pairs(tbl) do
+			if tra:IsTerror() and (tra:GetTeam() == ply:GetTeam() or tra:GetSubRoleData().defaultTeam == ply:GetTeam() or tra:GetSubRole() == ROLE_SPY) and tra ~= ply then
+				tbl[tra] = {ROLE_TRAITOR, TEAM_TRAITOR}
+			elseif ply == tra then
+				tbl[tra] = {tbl[tra][1], tra:GetTeam()}
+			end
+		end
+	end)
 end
 
 if CLIENT then
