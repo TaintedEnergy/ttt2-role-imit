@@ -13,7 +13,7 @@ hook.Add("TTTUlxDynamicRCVars", "TTTUlxDynamicUndecidedCVars", function(tbl)
 		desc = "ttt2_imitator_num_choices (def: 3)"
 	})
 
-	table.insert(tbl[ROLE_UNDECIDED], {
+	table.insert(tbl[ROLE_IMITATOR], {
 		cvar = "ttt2_imitator_hide_secret_roles",
 		checkbox = true,
 		desc = "ttt2_imitator_hide_secret_roles (def: 1)"
